@@ -3,7 +3,6 @@ import cors from 'cors'
 import { expressjwt } from 'express-jwt'
 import md5 from 'md5'
 import path from 'path'
-import http from 'http'
 import https from 'https'
 import fs from 'fs'
 
@@ -62,6 +61,4 @@ function errorHandler(err: any, req: Request, res: Response, next: NextFunction)
   }
 }
 
-process.env.NODE_ENV === 'development' ?
-    http.createServer(app).listen(8000) :
-    https.createServer(httpsOptions, app).listen(8000)
+https.createServer(httpsOptions, app).listen(8000)
