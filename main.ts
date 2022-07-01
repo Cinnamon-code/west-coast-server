@@ -61,4 +61,16 @@ function errorHandler(err: any, req: Request, res: Response, next: NextFunction)
   }
 }
 
-https.createServer(httpsOptions, app).listen(8000, '0.0.0.0', () => console.log('started'))
+const server = https.createServer(httpsOptions, app)
+
+server.listen(8000, '0.0.0.0', () => {
+  console.log('started')
+})
+
+server.on('error', (...args) => {
+  console.log(args)
+})
+
+server.on('connection', (...args) => {
+  console.log(args)
+})
