@@ -61,4 +61,4 @@ function errorHandler(err: any, req: Request, res: Response, next: NextFunction)
   }
 }
 
-https.createServer(httpsOptions, app).listen(8000)
+https.createServer(httpsOptions, app).listen(8000, '0.0.0.0', () => console.log('started'))
