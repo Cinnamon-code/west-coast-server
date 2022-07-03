@@ -63,14 +63,4 @@ function errorHandler(err: any, req: Request, res: Response, next: NextFunction)
 
 const server = https.createServer(httpsOptions, app)
 
-server.listen(8000, '0.0.0.0', () => {
-  console.log('started')
-})
-
-server.on('error', (...args) => {
-  console.log(args)
-})
-
-server.on('connection', (...args) => {
-  console.log(args)
-})
+server.listen(8000)
