@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.ts",
   "scripts": {
-    "build": "tsc && cp -R ./https ./dist && mkdir -p ./public/avatars",
+    "build": "tsc && cp -R ./https ./dist && cp -R ./public ./dist",
     "serve": "npm run build && node ./dist/main.js",
     "dev": "cross-env NODE_ENV=development nodemon -e ts --exec 'ts-node' ./main.ts"
   },
