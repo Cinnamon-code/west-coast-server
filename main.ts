@@ -7,6 +7,7 @@ import https from 'https'
 import fs from 'fs'
 
 import router from './routes'
+import * as http from 'http'
 
 const app = express()
 
@@ -20,9 +21,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // CORS跨域资源共享
-app.use(cors({
-  origin: '*',
-}))
+app.use(cors())
 
 // JWT鉴权
 export const secretKey = md5(md5(md5('shencong-west-coast-server')))
@@ -61,6 +60,6 @@ function errorHandler(err: any, req: Request, res: Response, next: NextFunction)
   }
 }
 
-const server = https.createServer(httpsOptions, app)
+const server = process.env.NODE_ENV === 'development' ? http.createServer(app) : https.createServer(httpsOptions, app)
 
-server.listen(8000)
+server.listen(8000, () => console.log('started'))

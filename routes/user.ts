@@ -8,5 +8,6 @@ router.post('/login', userController.login)
 router.post('/existed', userController.existed)
 router.get('/info', userController.info)
 router.post('/signature', userController.signature)
+router.post('/upload-avatar', userController.uploadAvatar)
 
 export default router

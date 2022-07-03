@@ -5,7 +5,7 @@ type User = {
   _id: ObjectId | string,
   username: string,
   password: string,
-  avatarId: string,
+  avatarUrl: string,
   signature: string,
   email: string,
   website: string,

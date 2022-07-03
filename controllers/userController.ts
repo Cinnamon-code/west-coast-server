@@ -26,7 +26,7 @@ class UserController {
         msg: 'Login succeed.',
         status: true,
         token,
-        userInfo: rst[0],
+        userInfo: { ...rst[0], root: rst[0].username === 'cinnamons' },
       })
     } else res.send({
       msg: 'Login failed. Check your info again.',
@@ -52,7 +52,7 @@ class UserController {
       res.send({
         status: Object.keys(userInfo).length !== 0,
         msg: 'Get info succeed.',
-        userInfo,
+        userInfo: { ...userInfo, root: userInfo.username === 'cinnamons' },
       })
     }
   }
@@ -64,6 +64,16 @@ class UserController {
     res.send({
       status,
       msg: status ? 'Save succeed.' : 'Save failed.'
+    })
+  }
+
+  async uploadAvatar(req: Request, res: Response) {
+    const avatar = await userService.uploadAvatar(req)
+    res.status(200)
+    res.send({
+      msg: avatar ? 'Update succeed.' : 'Update failed.',
+      status: !!avatar,
+      avatar
     })
   }
 }
