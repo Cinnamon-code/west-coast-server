@@ -28,7 +28,7 @@ export const secretKey = md5(md5(md5('shencong-west-coast-server')))
 app.use(expressjwt({
   secret: secretKey,
   algorithms: ['HS256'],
-}).unless({ path: [/\/api\/user\/(login|register|existed)/] }))
+}).unless({ path: [/\/api\/user\/(login|register|existed)/, /\/article\/all/] }))
 
 // 路由
 app.use('/api', router)
